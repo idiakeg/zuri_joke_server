@@ -61,6 +61,8 @@ const postRequestHandler = (req, res) => {
         }
 
         jsonReqBody = JSON.parse(req.body.concat().toString());
+        let id = db[db.length - 1].id + 1;
+        jsonReqBody.id = id;
         db = [...db, jsonReqBody];
         res.end(JSON.stringify({ status: "success", data: db }));
     });
